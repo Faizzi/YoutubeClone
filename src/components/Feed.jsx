@@ -7,9 +7,10 @@ const Feed = () => {
   const [selectedCategory,setSelectedCategory] =useState('New');
   const [videos,setVideos] = useState([]);
   useEffect(()=>{
+   
        fetchFromApi(`search?part=snippet&q=${selectedCategory}`)
         .then((data)=>setVideos(data.items))
-  },[])
+  },[selectedCategory])
   return (
     <Stack sx={{flexDirection:{sx:"column",md:"row"}}}>
            <Box sx={{height:{sx:"auto",md:'92vh'},
